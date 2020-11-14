@@ -22,16 +22,16 @@
   width: 200px;
 }
 
-#green-color {
+#green {
   background-color: green;
 }
-#yellow-color {
-  background-color: yellow;
+#violet {
+  background-color: #8A2BE2;
 }
-#red-color {
+#red {
   background-color: red;
 }
-#blue-color {
+#blue {
   background-color: blue;
 }
 
@@ -48,4 +48,16 @@
   font-size: 20px;
   border-radius: 4px;
   font-weight: bold;
+  cursor: pointer;
+}
+#start-button:hover {
+  opacity: 0.95;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.light {
+  opacity: 0.3;
 }

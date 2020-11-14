@@ -8,16 +8,16 @@
 </head>
 <body>
 
-  <div id="start-button">Start Game</div>
-  <div class="game-container"></div>
+  <div id="start-button" onclick="initializeGame()">Start Game</div>
+  <div class="game-container" id="game-overflow"></div>
   <div class="colors-container">
     <div class="upper-container">
-      <div id="green-color" class="color" onclick="setClickEvent(this.id)"></div>
-      <div id="yellow-color" class="color" onclick="setClickEvent(this.id)"></div>
+      <div id="green" class="color" onclick="setClickEvent(this.id)"></div>
+      <div id="violet" class="color" onclick="setClickEvent(this.id)"></div>
     </div>
     <div class="lower-container">
-      <div id="red-color" class="color" onclick="setClickEvent(this.id)"></div>
-    <div id="blue-color" class="color" onclick="setClickEvent(this.id)"></div>
+      <div id="red" class="color" onclick="setClickEvent(this.id)"></div>
+      <div id="blue" class="color" onclick="setClickEvent(this.id)"></div>
     </div>
   </div>
 
