@@ -1,0 +1,27 @@
+.simon-container {
+  border-radius: 50%;
+  height: 400px;
+  width: 400px;
+  overflow: hidden;
+}
+
+.upper-container, .lower-container {
+  display: flex;
+}
+.color {
+  height: 200px;
+  width: 200px;
+}
+
+#green-color {
+  background-color: green;
+}
+#yellow-color {
+  background-color: yellow;
+}
+#red-color {
+  background-color: red;
+}
+#blue-color {
+  background-color: blue;
+}

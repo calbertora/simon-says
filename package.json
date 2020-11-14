@@ -1,0 +1,19 @@
+{
+  "name": "simonsaysjs",
+  "version": "1.0.0",
+  "description": "Platzi Fundamentos JS Simón Dice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calbertora/simon-says.git"
+  },
+  "author": "calbertora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calbertora/simon-says/issues"
+  },
+  "homepage": "https://github.com/calbertora/simon-says#readme"
+}
