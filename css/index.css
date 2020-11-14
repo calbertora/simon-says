@@ -1,8 +1,17 @@
-.simon-container {
+.game-container {
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0,0,0,0.6);
+  position: fixed;
+  z-index: 2;
+}
+.colors-container {
   border-radius: 50%;
   height: 400px;
   width: 400px;
   overflow: hidden;
+  position: absolute;
+  z-index: 1;
 }
 
 .upper-container, .lower-container {
@@ -24,4 +33,19 @@
 }
 #blue-color {
   background-color: blue;
+}
+
+#start-button {
+  position: fixed;
+  z-index: 200;
+  color: 	#5b5194;
+  background-color: #e2b340;
+  top: 180px;
+  left: 100px;
+  width: 200px;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 20px;
+  border-radius: 4px;
+  font-weight: bold;
 }
