@@ -1,6 +1,10 @@
+let simon;
+
 function initializeGame() {
-  const simon = new SimonGame();
+  simon = new SimonGame();
 }
+let sequenceIndex = 0;
+let clicksAllowed = 0;
 
 class SimonGame {
   constructor() {
@@ -9,7 +13,10 @@ class SimonGame {
       .fill(0)
       .map(() => this.getRandomMax());
     
-    this.sequenceIndex = 1;
+    sequenceIndex = 1;
+    clicksAllowed = sequenceIndex;
+
+    this.lightColors = this.lightColors.bind(this);
     this.colorMap = {
       0: 'green',
       1: 'violet',
@@ -17,6 +24,7 @@ class SimonGame {
       3: 'blue',
     }
     this.initializeGame();
+    this.userAnswers = [];
   }
 
   getRandomMax() {
@@ -25,7 +33,6 @@ class SimonGame {
   }
 
   initializeGame() {
-    //this.initializeColors();
     this.hideButtonAndBackground();
     this.lightColors();
   }
@@ -37,17 +44,11 @@ class SimonGame {
     background.classList.add('hide');
   }
 
-  initializeColors() {
-    const divs = document.getElementsByTagName('div');
-    const divsList = [...divs];
-    this.colors = divsList.filter(el => el.id.includes('color'));
-    this.colors = this.colors.map(el => ({id: el.id.split('-')[0], element: el}));
-  }
-
   lightColors() {
-    for(let i=0; i < this.sequenceIndex; i++) {
+    console.log(sequenceIndex);
+    for(let i=0; i < sequenceIndex; i++) {
       const color = this.sequence[i];
-      window.setTimeout(()=> this.changeColorToLight(color), this.TIME_COLOR_LIGHTED);
+      window.setTimeout(()=> this.changeColorToLight(color), this.TIME_COLOR_LIGHTED*(i+1));
     }
   }
 
@@ -55,13 +56,57 @@ class SimonGame {
     const color = this.colorMap[colorNumber];
     let colorElement = document.getElementById(color);
     colorElement.classList.add('light');
-    console.log(this.TIME_COLOR_LIGHTED);
     setTimeout(()=> colorElement.classList.remove('light'), this.TIME_COLOR_LIGHTED/2);
     
+  }
+
+  setGameAnswer(colorClicked) {
+    clicksAllowed--;
+    
+    if(colorClicked) {
+      this.userAnswers.push(colorClicked);
+    } else {
+      this.hideContinueButton();
+    }
+
+    if(clicksAllowed === 0) {
+      this.showContinueButton();
+    }
+    
+  }
+
+  hideContinueButton() {
+    let continueButton = document.getElementById('continue-button');
+    continueButton.classList.remove('visible');
+    continueButton.classList.add('hide');  
+  }
+
+  showContinueButton() {
+    let continueButton = document.getElementById('continue-button');
+    continueButton.classList.remove('hide');
+    continueButton.classList.add('visible');
+  }
+
+  finishGame() {
+    let continueButton = document.getElementById('game-finished');
+    continueButton.classList.remove('hide');
+    continueButton.classList.add('visible'); 
   }
 
 }
 
 function setClickEvent(event) {
-  console.log(event);
+
+  if (clicksAllowed) {
+    simon.setGameAnswer(event);
+  } else {
+    sequenceIndex++;
+    if (sequenceIndex > 10) {
+      simon.finishGame();
+    } else {
+      clicksAllowed = sequenceIndex;
+      simon.hideContinueButton();
+      simon.lightColors();
+    }
+  }
 }

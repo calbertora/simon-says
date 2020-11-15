@@ -35,9 +35,9 @@
   background-color: blue;
 }
 
-#start-button {
+#start-button, #continue-button, #game-finished {
   position: fixed;
-  z-index: 200;
+  z-index: 3;
   color: 	#5b5194;
   background-color: #e2b340;
   top: 180px;
@@ -50,6 +50,12 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+.visible {
+  visibility: visible;
+  z-index: 3;
+}
+
 #start-button:hover {
   opacity: 0.95;
 }
