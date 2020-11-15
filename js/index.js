@@ -45,7 +45,6 @@ class SimonGame {
   }
 
   lightColors() {
-    console.log(sequenceIndex);
     for(let i=0; i < sequenceIndex; i++) {
       const color = this.sequence[i];
       window.setTimeout(()=> this.changeColorToLight(color), this.TIME_COLOR_LIGHTED*(i+1));
